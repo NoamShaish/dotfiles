@@ -3,13 +3,9 @@ zsh-syntax-highlighting
 fzf
 watch
 git
-vegeta
 wget
 telnet
-kubernetes-cli
-kubernetes-helm
 python3
-derailed/k9s/k9s
-graphviz
 shellcheck
 jq
+awscli
