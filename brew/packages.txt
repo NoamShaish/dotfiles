@@ -9,3 +9,7 @@ python3
 shellcheck
 jq
 awscli
+sbt
+scala
+terraform
+ansible
