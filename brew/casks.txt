@@ -7,6 +7,6 @@ iterm2
 postman
 rectangle
 docker
-macpass
+keepassx
 typora
 licecap
