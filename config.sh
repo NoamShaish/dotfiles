@@ -6,11 +6,13 @@ export DOTFILES_HOME_DIR=${HOME}/.dotfiles
 
 # Description  ENV var specifying codebase root folder
 # ====================================================
-export CODEBASE=${HOME}/codebase
+SCRIPT=$(greadlink -f "$0")
+
+export CODEBASE=$(dirname $(dirname "$SCRIPT"))
 
 # Description  ENV var dotfiles repository path (+alias)
 # ======================================================
-export DOTFILES_REPO=${CODEBASE}/github/dotfiles
+export DOTFILES_REPO=${CODEBASE}/dotfiles
 alias dotfiles=${DOTFILES_REPO}
 
 # Description  ENV var specifying environmental settings e.g. Go, JDK etc..

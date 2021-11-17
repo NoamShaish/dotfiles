@@ -1,9 +1,11 @@
+wget
+coreutils
 zsh
 zsh-syntax-highlighting
+zsh-autosuggestions
 fzf
 watch
 git
-wget
 telnet
 python3
 shellcheck

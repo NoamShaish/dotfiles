@@ -62,8 +62,10 @@ plugins=(
   git
   sbt
   zsh-syntax-highlighting
-  zsh-autosuggestions
 )
+
+# zsh-autosuggestions
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -99,6 +101,8 @@ source ${ZSH}/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+
 
 # Used for anchor auto completion - load /usr/local/share/zsh/site-functions/_anchor
 autoload -U compinit && compinit
