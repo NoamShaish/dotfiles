@@ -111,6 +111,27 @@ _oh_my_zsh_setup_shell() {
   exec zsh -l
 }
 
+_oh_my_zsh_fonts_setup() {
+  echo -e "
+  ==================
+  Installing Plugin: powerline fonts
+  ==================
+  "
+
+  # Test if fonts are installed
+  set -- $HOME/Library/Fonts/Meslo\ LG\ S\ DZ*
+  if [ -f "$1" ]; then
+    printf "PowerLine Fonts already installed"
+  else 
+    git clone https://github.com/powerline/fonts.git /tmp/powerlinefonts
+    cd fonts
+    sh /tmp/powerlinefonts/install.sh 
+  fi
+
+  # Set default fonts
+  plutil -replace 0."Normal Font" -string "MesloLGSDZForPowerline-Regular 12" ~/Library/Preferences/com.googlecode.iterm2.plist
+}
+
 oh_my_zsh_setup_install() {
 
   if [[ "$(basename "$SHELL")" != "zsh" ]]; then
