@@ -11,3 +11,4 @@ keepassx
 typora
 licecap
 yed
+kafka-tool
