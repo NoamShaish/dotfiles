@@ -11,4 +11,4 @@ keepassx
 typora
 licecap
 yed
-kafka-tool
+offset-explorer
