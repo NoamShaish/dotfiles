@@ -101,10 +101,27 @@ source ${ZSH}/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# proxy_url="http://127.0.0.1:3128"
+# export http_proxy=$proxy_url
+# export https_proxy=$http_proxy
+# export HTTP_PROXY=$http_proxy
+# export HTTPS_PROXY=$http_proxy
+# export ALL_PROXY=$http_proxy
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+# export _JAVA_OPTIONS="-Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=3128 -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=3128 -Dhttps.nonProxyHosts=localhost|*.bmwgroup.net|*.muc -Dhttp.nonProxyHosts=localhost|*.bmwgroup.net|*.muc"
 
 # Used for anchor auto completion - load /usr/local/share/zsh/site-functions/_anchor
 autoload -U compinit && compinit
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

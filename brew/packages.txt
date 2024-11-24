@@ -3,16 +3,13 @@ coreutils
 zsh
 zsh-syntax-highlighting
 zsh-autosuggestions
-fzf
 watch
 git
 telnet
 python3
-shellcheck
 jq
 awscli
 sbt
 scala
 terraform
 ansible
-jq

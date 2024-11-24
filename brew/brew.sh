@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/bin/bash
 
 # Title        brew.sh
 # Description  Install/upgrade Homebrew packages and casks
@@ -52,7 +52,7 @@ install_homebrew() {
 "
   if [[ ! -d "/usr/local/Homebrew" ]]; then
     echo "==> Installing..."
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   else
     echo "==> Already installed."
   fi
@@ -82,16 +82,8 @@ install_packages() {
 ======================================================================="
 
   packages_filename='brew/packages.txt'
-  while read pkg; do
-    # reading each line
-    echo -e "
-===================
-Installing Package: ${pkg}
-===================
-"
-    brew install ${pkg}
+  brew install $(<${packages_filename})
 
-  done < ${packages_filename}
 }
 
 # install_casks Function
@@ -107,16 +99,7 @@ install_casks() {
 ======================================================================="
 
   casks_filename='brew/casks.txt'
-  while read cask; do
-    # reading each line
-    echo -e "
-================
-Installing Cask: ${cask}
-================
-"
-    brew install --cask ${cask}
-
-  done < ${casks_filename}
+  brew install $(<${casks_filename})
 }
 
 list_all() {

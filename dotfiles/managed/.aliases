@@ -1,12 +1,11 @@
 #!/bin/bash
 
 # -=-= Custom =-=-
-alias github="cd ${CODEBASE}/github"
+alias workspace="cd ${CODEBASE}/work"
 alias dl="cd ~/Downloads"
 alias dc="docker-compose"
 
 # -=-= Applications =-=-
-alias typora="open -a typora"
 # Exist only for Java 1.8 - need to use a full path
 alias visualvm="${JAVA_8_HOME}/bin/jvisualvm &"
 
@@ -27,3 +26,26 @@ alias ij-cache="cd ~/Library/Caches/JetBrains/${INTELLIJ_VERSION_FOLDER}"
 alias ij-pref="cd ~/Library/Preferences/JetBrains/${INTELLIJ_VERSION_FOLDER}"
 alias ij-plug="cd ~/Library/Application\ Support/JetBrains/${INTELLIJ_VERSION_FOLDER}"
 alias ij-logs="cd ~/Library/Logs/JetBrains/${INTELLIJ_VERSION_FOLDER}"
+
+
+# -=-= Git =-=-
+alias git_backup_branch='git branch -D backup/$(git branch --show-current) ; git branch backup/$(git branch --show-current)'
+alias git_rebase_on_master='git fetch origin master && git rebase -i origin/master'
+alias git_squash_branch='git fetch origin master && git rebase --interactive $(git merge-base $(git branch --show-current) origin/master)'
+alias git_pull_master='git checkout master && git pull && git checkout -'
+alias git_push_set_upstream='git push --set-upstream origin $(git symbolic-ref --short HEAD)'
+alias git_push_gently='git push --force-with-lease'
+
+# -=-= Python =-=-
+alias python_clean_cache_r="find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete"
+
+# -=-= Cntlm =-=-
+alias cntlm_start="cntlm -v -c ${CNTLM_CONF}"
+alias cntlm_refresh_pass="sed -i -e 's/^[^# ]*PassNTLMv2/#&/' ${CNTLM_CONF};cntlm -H -M http://heise.de -c ${CNTLM_CONF}"
+
+alias gen_pass='gen_pass'
+
+# -=-= AWS =-=-
+alias aws_referesh_sso="eval 'echo \"Using $REALM_CICD_ACCOUNT_PROFILE\"';aws sso login --sso-session prodorg;eval '\$(aws configure export-credentials --profile \$REALM_CICD_ACCOUNT_PROFILE --format env)'"
+
+alias decode_jwt_token="if [ ${JWT_ENC_TOKEN+x} ]; then echo $JWT_ENC_TOKEN | jq -R 'split(\".\") | .[0:2] | map(gsub(\"-\"; \"+\") | gsub(\"_\"; \"/\") | gsub(\"%3D\"; \"=\") | @base64d) | map(fromjson)'; else echo \"JWT_ENC_TOKEN is not set\"; fi"

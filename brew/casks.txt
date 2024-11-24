@@ -1,14 +1,9 @@
-alfred
 google-chrome
-spotify
 tableplus
 visual-studio-code
 iterm2
-postman
 rectangle
 docker
 keepassx
-typora
-licecap
-yed
-offset-explorer
+obsidian
+drawio

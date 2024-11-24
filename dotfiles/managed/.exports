@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 # -=-= Homebrew =-=-
 export HOMEBREW_CELLAR=/usr/local/Cellar
 export HOMEBREW_CASKROOM=/usr/local/Caskroom
@@ -24,6 +22,28 @@ export TERRAFORM_FILES=${CODEBASE}/github/terraformfiles
 export TF_LOG=DEBUG
 
 # -=-= Path =-=-
-export PATH=/usr/local/bin:/usr/bin:${JAVA_HOME}/bin:${GOROOT}/bin:${GOPATH}/bin:$HOME/.local/bin:${PATH}
+export PATH=/usr/local/bin:/usr/bin:${JAVA_HOME}/bin:${GOROOT}/bin:${GOPATH}/bin:$HOME/.local/bin:/usr/local/share/python:${PATH}
+
+# Configuration for virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Do not unset these ENV vars since there are aliases that rely on them
+
+# -=-= Git =-=-
+export GIT_LFS_SKIP_SMUDGE=1
+
+# -= PROXY (cntlm) =-
+export CNTLM_CONF="~/.config/cntlm/cntlm.conf"
+export proxy_url="http://127.0.0.1:3128"
+export http_proxy=$proxy_url
+export https_proxy=$http_proxy
+export HTTP_PROXY=$http_proxy
+export HTTPS_PROXY=$http_proxy
+export no_proxy=localhost,127.0.0.0,127.0.1.1,127.0.1.1,local.home,10.6.15.99,aws.cloud.bmw,.bmwgroup.net,.muc,azure.cloud.bmw
+
+# -=-= AWS ORION =-=-
+export REALM_MARKERS_CICD_PROFILE="orion-markers-markersv1-cicd"
+export REALM_CICD_ACCOUNT_PROFILE=$REALM_MARKERS_CICD_PROFILE
