@@ -13,3 +13,4 @@ sbt
 scala
 terraform
 ansible
+cntlm
