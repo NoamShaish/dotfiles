@@ -72,3 +72,18 @@ docker_remove_dangling_intermediate_images() {
 docker_remove_stopped_containers() {
   docker container prune -f
 }
+
+gen_pass() {
+  WORDS=4; 
+  DELEM=$(shuf -e '!' '@' '#' '$' '%' '^' '&' '*' '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' '0' | tr -d "\n") ;
+  LC_ALL=C grep -x '[a-z]*' /usr/share/dict/words | shuf --random-source=/dev/urandom -n ${WORDS} | paste -s -d ${DELEM} -
+}
+
+proxy_on() {
+  export proxy=http://127.0.0.1:3128
+  export http_proxy=$proxy_url
+  export https_proxy=$http_proxy
+  export HTTP_PROXY=$http_proxy
+  export HTTPS_PROXY=$http_proxy
+  export no_proxy=localhost,127.0.0.0,127.0.1.1,127.0.1.1,local.home,10.6.15.99,aws.cloud.bmw,.bmwgroup.net,.muc,azure.cloud.bmw
+}
